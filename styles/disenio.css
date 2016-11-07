@@ -1,0 +1,102 @@
+body{
+	background-color:#027368;
+	font-family:"Comic Sans MS", cursive, sans-serif;
+}
+table{
+	background-color:orange;
+	padding:5mm;
+	margin:5%;
+	position:absolute;
+	top:3cm;
+	border:1px solid black;
+	border-radius:30px;
+}
+td{
+	padding:5mm;
+	border:1px solid black;
+	font-size:18;
+	}
+
+img{
+	position:relative;
+	left:60%;
+	top:5px;
+}
+h1{
+	background-color:orange;
+	text-align:center;
+	border-radius:30px;
+}
+h2{
+	color:white;
+	position:absolute;
+	top:50%;
+	left:10%;
+}
+section.int{
+	background-color:#1e2e4d;
+	position:relative;
+	top:40%;
+	left:40%;
+	width:15%;
+	height:15%;
+	padding:3%;
+	text-align:center;
+	border-radius:20px;
+}
+.inicio{
+	display:block;
+	/*margin-left:10%;*/
+	position:relative;
+	top:45%;
+	/*left:10%;*/
+	text-align:center;
+}
+.primero{
+	border-radius:5px;
+	/*display:block;*/
+	margin-bottom:20%;
+}
+.segundo{
+	border-radius:5px;
+	/*display:block;*/
+}
+/*.inicio{
+	position:absolute;
+	left:45%;
+	top:45%;
+}*/
+#nombre{
+	width:50%;
+	text-align:center;
+	position:relative;
+	left:25%;
+	top:30%;
+}
+#puntaje{
+	text-align:center;
+	margin:5%;
+}
+#tercero{
+	position:absolute;
+	left:45%;
+}
+#cubrir{
+	position:absolute;
+	top:10%;
+	left:1%;
+	background-color:inherit;
+	width:98%;
+	height:85%;
+}
+img.fin{
+	position:fixed;
+	left:27%;
+	top:12%;
+	z-index:1;
+}
+.btnFn{
+	position:absolute;
+	right:10%;
+	top:50%;
+}
