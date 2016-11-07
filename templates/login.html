@@ -3,17 +3,58 @@
 	<head>
 		<title>Ahorcado</title>
 		<meta charset="UTF-8">
+		
+		<link href="../bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet"/>
 		<link rel="stylesheet" href="..\styles\disenio.css"/>
 	</head>
 	<body>
 		<header><h1>Ahorcado</h1></header>
 		<section class="int">
-			<form action="registro.html" class="inicio">
-				<input type="submit" value="Registrarse" class="primero"/> <!--class="inicio"-->
-			</form>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-registro">Registrarse</button> <!--class="inicio"-->
+			
+			<div class="modal fade" id="modal-registro" role="dialog">
+				 <div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1>Registro</h1>
+						</div>
+						<div class="modal-body" id="cuerpo-modal">
+							<form class="form-horizontal">
+								<div class="form-group">
+									<label for="nombre" class="label-control col-md-3">Nombre: </label>
+									<div class="col-md-9">
+										<input type="text" id="nombre" class="form-control" maxlength="10" placeholder="¿Cómo te gustaría que te llame?"/>
+									</div>
+								</div>
+								<div class="form-group has-feedback">
+									<label for="usuario" class="label-control col-md-3">Nombre de usuario: </label>
+									<div class="col-md-9">
+										<input type="text" id="usuario" class="form-control" maxlength="10" placeholder="letras y numeros"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="contra" class="label-control col-md-3">Contraseña: </label>
+									<div class="col-md-9">
+										<input type="password" id="contra" class="form-control" maxlength="12"/>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary btn-lg" id="btn-reg">Enviar</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<form action="usuario.html" class="inicio">
-				<input type="submit" value="Iniciar sesión" class="segundo"/><!--class="inicio"--> 
+				<button type="submit" class="btn btn-primary" class="segundo">Iniciar sesión</button><!--class="inicio"--> 
 			</form>
 		</section>
+		
+		<script src="../programs/jquery-2.2.3.js"></script>
+		<script src="../bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+		<script src="../programs/validarRegistro.js"></script>
+		
 	</body>
 </html>

@@ -1,3 +1,4 @@
+<!--Es la pantalla de inicio de cada jugador-->
 <?php
 include_once 'funcionesCookieF.php';
 session_name('actual');
