@@ -30,3 +30,29 @@ $("#btn-reg").click(function(event){
 		}
 	});
 });
+
+$("#btn-ini").click(function(event){
+	$.ajax({
+		url:"../valida.php",
+		data:{
+			usuario-ini:$("#usuario-ini").val(),
+			contra-ini:$("#contra-ini").val()
+		},
+		type:"POST",
+		dataType:"text",
+		success:function(data){
+			if(data=='entraste')
+				console.log("Has accesado");
+			else
+			{
+				event.preventDefault();
+				if(data=='incompleto')
+					console.log("Completa los datos");
+				else if(data=='nohay')
+					console.log("Ese usuario no existe");
+				else if(data=='contrasenia incorrecta')
+					console.log("Contraseña incorrecta");
+			}
+		}
+	});
+});
