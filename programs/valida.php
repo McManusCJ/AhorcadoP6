@@ -7,40 +7,41 @@ if(isset($_POST['usuario']) && isset($_POST['contra']) && isset($_POST['nombre']
 	$query='SELECT USUARIO_USS FROM USUARIO WHERE USUARIO_USS="'.$uss.'"';
 	$res=mysqli_query($conexion,$query);
 	if(mysqli_num_rows($res)!=0)	//si el usuario ya existe
-		echo 'existe';
+		echo 'ERROR: Usuario Existente';
 	else		//crea el usuario
 	{
-		echo 'pasa';
-		$con=mysqli_real_escape_string($conexion,$_POST['contra'];
+		$con=mysqli_real_escape_string($conexion,$_POST['contra']);
 		$nom=mysqli_real_escape_string($conexion,$_POST['nombre']);
 		$query='INSERT INTO USUARIO VALUES("'.$nom.'","'.$uss.'","'.$con.'","J");';
 		$res=mysqli_query($conexion,$query);
+		echo 'SUCCESS';
 	}
 }
-else if(isset($_POST['usuario-ini']) && isset($_POST['contra-ini']))	//entrar como usuario
+else if(isset($_POST['usuarioIni']) && isset($_POST['contraIni']))	//entrar como usuario
+{
+	$conexion=mysqli_connect('localhost','root','','AHORCADO'); //establece conexión con la DB AHORCADO
+	mysqli_set_charset($conexion,"utf8");
+	$usIn=mysqli_real_escape_string($conexion,$_POST['usuarioIni']);
+	$conIn=mysqli_real_escape_string($conexion,$_POST['contraIni']);
+	$query='SELECT * FROM USUARIO WHERE USUARIO_USS="'.$usIn.'";';
+	$res=mysqli_query($conexion,$query);
+	if(mysqli_num_rows($res)!=0)
 	{
-		$conexion=mysqli_connect('localhost','root','','AHORCADO'); //establece conexión con la DB AHORCADO
-		mysqli_set_charset($conexion,"utf8");
-		$usIn=mysqli_real_escape_string($conexion,$_POST['usuario-ini']);
-		$conIn=mysqli_real_escape_string($conexion,$_POST['contra-ini']);
-		$query='SELECT USUARIO_PSW,USUARIO_NOM FROM USUARIO WHERE USUARIO_USS="'.$usIn.'";';
-		$res=mysqli_query($conexion,$query);
-		if(mysqli_num_rows($res)!=0)
+		$arr=mysqli_fetch_assoc($res);
+		if($arr['USUARIO_PSW'] == $conIn)
 		{
-			$arr=mysqli_fetch_assoc($res);
-			if($arr['USUARIO_PSW']==$conIn)
-			{
-				session_name('actual');
-				session_start();
-				$_SESSION['nombre']=$arr['USUARIO_NOM'];
-				$_SESSION['tipo']=$arr['USUARIO_TIP'];
-				echo 'entraste';
-			}
-			else
-				echo 'contrasenia incorrecta';
+			session_name('actual');
+			session_start();
+			$_SESSION['nombre']=$arr['USUARIO_NOM'];
+			$_SESSION['tipo']=$arr['USUARIO_TIP'];
+			echo 'SUCCESS';
 		}
 		else
-			echo 'nohay';
+			echo 'ERROR: INCORRECTA';
 	}
-	echo "incompleto";
+	else
+		echo 'ERROR: NO EXISTE';
+}
+else
+	echo 'ERROR: Completar datos';
 ?>

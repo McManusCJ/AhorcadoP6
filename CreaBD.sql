@@ -6,7 +6,7 @@ SET LOCAL CHARACTER_SET_SERVER=UTF8;
 CREATE TABLE USUARIO
 (
 	USUARIO_NOM varchar(10),
-	USUARIO_USS varchar(10),
+	USUARIO_USS varchar(9),
 	USUARIO_PSW varchar(64),
 	USUARIO_TIP char(1),
 	PRIMARY KEY (USUARIO_USS)
@@ -21,9 +21,9 @@ CREATE TABLE PREGUNTA
 	PRIMARY KEY (PREGUNTA_NUM)
 );
 
-INSERT INTO USUARIO VALUES('ETHAN','laroche','tripleH12','J');
-INSERT INTO USUARIO VALUES('KEVIN','CejonLV','mamemimomu','J');
-INSERT INTO USUARIO VALUES('CLYDE','ClyMcM','Mamanus#2','A');
+INSERT INTO USUARIO VALUES('ETHAN','317542689','tripleH12','J');
+INSERT INTO USUARIO VALUES('KEVIN','315294378','mamemimomu','J');
+INSERT INTO USUARIO VALUES('CLYDE','672486','Mamanus#2','A');
 
 INSERT INTO PREGUNTA VALUES(1,'Organelo que lleva a cabo la respiración celular para obtener energía para la célula','mitocondria','1502');
 INSERT INTO PREGUNTA VALUES(2,'Unidad mínima de vida','celula','1502');

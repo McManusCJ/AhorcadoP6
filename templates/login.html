@@ -1,3 +1,5 @@
+<!--los span tal vez no son necesarios-->
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,25 +21,29 @@
 						</div>
 						<div class="modal-body" id="cuerpo-modal">
 							<form class="form-horizontal">
-								<div class="form-group">
+								<div class="form-group has-feedback">
 									<label for="nombre" class="label-control col-md-3">Nombre: </label>
 									<div class="col-md-9">
-										<input type="text" name="nombre" id="nombre" class="form-control" maxlength="10" placeholder="Tu nombre"/> <!--id="nombre"-->
+										<input type="text" name="nombre" id="nom-reg" class="form-control" maxlength="10" placeholder="Tu nombre"/>
+										<span class="form-control-feedback glyphicon" id="icon-nom-reg"></span>
 									</div>
 								</div>
 								<div class="form-group has-feedback">
 									<label for="usuario" class="label-control col-md-3">Usuario: </label>
 									<div class="col-md-9">
-										<input type="text" name="usuario" id="usuario" class="form-control" maxlength="8" placeholder="Número de cuenta"/>
+										<input type="text" name="usuario" id="usu-reg" class="form-control" maxlength="9" placeholder="Número de cuenta"/>
+										<span class="form-control-feedback glyphicon" id="icon-usu-reg"></span>
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="form-group has-feedback">
 									<label for="contra" class="label-control col-md-3">Contraseña: </label>
 									<div class="col-md-9">
-										<input type="password" name="contra" id="contra" class="form-control" maxlength="12"/>
+										<input type="password" name="contra" id="con-reg" class="form-control" maxlength="12"/>
+										<span class="form-control-feedback glyphicon" id="icon-con-reg"></span>
 									</div>
 								</div>
 							</form>
+							<div class="alert hidden" id="nota-reg" role="alert"></div>
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-success btn-lg" id="btn-reg">Registrarse</button>
@@ -59,16 +65,19 @@
 								<div class="form-group has-feedback">
 									<label for="usuario-ini" class="label-control col-md-3">Usuario: </label>
 									<div class="col-md-9">
-										<input type="text" name="usuario-ini" id="usuario-ini" class="form-control" maxlength="8" placeholder="letras y numeros"/>
+										<input type="text" name="usuario-ini" id="usu-ini" class="form-control" maxlength="9" placeholder="Número de cuenta"/>
+										<span class="form-control-feedback glyphicon" id="icon-usu-ini"></span>
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="form-group has-feedback">
 									<label for="contra-ini" class="label-control col-md-3">Contraseña: </label>
 									<div class="col-md-9">
-										<input type="password" name="contra-ini" id="contra-ini" class="form-control" maxlength="12"/>
+										<input type="password" name="contra-ini" id="con-ini" class="form-control" maxlength="12"/>
+										<span class="form-control-feedback glyphicon" id="icon-con-ini"></span>
 									</div>
 								</div>
 							</form>
+							<div class="alert hidden" id="nota-ini" role="alert"></div>
 						</div>
 						<div class="modal-footer">
 							<button type="submit" class="btn btn-primary btn-lg" id="btn-ini">Entrar</button>
