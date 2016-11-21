@@ -6,7 +6,7 @@ function inicializarArreglo(&$arreglo,$medida)
 		$arreglo[$i]='&nbsp;';
 	return;
 }
-function juegoNuevo()	//obtiene nueva palabra del diccionario y asigna sesiones
+function juegoNuevo()	//obtiene nueva palabra del diccionario y asigna COOKIES
 {	
 	$vocabulario=file('../resources/vocabularios/vocabulario.txt');
 	$aleat=rand(0,19);

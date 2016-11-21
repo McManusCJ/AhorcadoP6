@@ -30,7 +30,7 @@
 						</div>
 					</section>
 					<section class="row" id="juego">
-						<div class="col-md-3 col-md-offset-1 regresar" id="tablero">
+						<div id="tablero" class="col-md-3 col-md-offset-1 regresar">
 							<div class="form-group">
 								<label for="materia">Escoge una materia</label>
 								<select id="materia" class="form-control">';
@@ -45,7 +45,7 @@
 							<button type="button" class="btn btn-primary center-block" id="empezar">Empezar Juego Nuevo</button>							
 						</div>
 						<div class="col-md-7 col-md-offset-1">
-							<img src="../resources/punt5.png" class="img-responsive">
+							<img id="ahorcado" src="../resources/punt5.png" class="img-responsive">
 						</div>
 					</section>
 				</div>';
