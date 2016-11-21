@@ -1,4 +1,5 @@
 <?php
+//nueva version
 if(isset($_POST['usuario']) && isset($_POST['contra']) && isset($_POST['nombre']))	//registrar usuario
 {
 	$conexion=mysqli_connect('localhost','root','','AHORCADO'); //establece conexión con la DB AHORCADO

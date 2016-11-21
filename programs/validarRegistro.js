@@ -1,3 +1,4 @@
+//falta agregar REGEX para todo
 
 $("#btn-reg").click(function(event){
 	
@@ -29,7 +30,6 @@ $("#btn-reg").click(function(event){
 				}
 				else
 				{
-					//event.preventDefault();
 					if(data == 'ERROR: Completar datos')
 					{
 						$("#nota-reg").removeClass("alert-warning");
@@ -55,8 +55,6 @@ $("#btn-reg").click(function(event){
 
 $("#btn-ini").click(function(event){
 	
-	$("#nota-ini").removeClass("hidden");
-	
 	if( $("#usu-ini").val().length >= 1 && 
 		$("#con-ini").val().length >= 1 )
 		
@@ -76,7 +74,7 @@ $("#btn-ini").click(function(event){
 					$(location).attr('href',"../programs/Inicio.php");
 				else
 				{
-					//event.preventDefault();	
+					$("#nota-ini").removeClass("hidden");	
 					if(data == 'ERROR: Completar datos')
 					{
 						$("#nota-ini").removeClass("alert-warning");
@@ -100,6 +98,7 @@ $("#btn-ini").click(function(event){
 		});
 	else
 	{
+		$("#nota-ini").removeClass("hidden");
 		$("#nota-ini").removeClass("alert-warning");
 		$("#nota-ini").addClass("alert-danger");
 		$("#nota-ini").html("Completa todos los campos");

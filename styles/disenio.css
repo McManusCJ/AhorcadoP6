@@ -17,11 +17,11 @@ td{
 	font-size:18;
 	}
 
-img{
+/*img{
 	position:relative;
 	left:60%;
 	top:5px;
-}
+}*/
 h1{
 	background-color:orange;
 	text-align:center;
@@ -99,4 +99,16 @@ img.fin{
 	position:absolute;
 	right:10%;
 	top:50%;
+}
+.info{
+	background-color:#1e2e4d;
+	border-radius:20px;
+	text-align:center;
+	color:white;
+}
+div.regresar{
+	margin-top:10%;
+}
+a.regresar{
+	margin:10px;
 }

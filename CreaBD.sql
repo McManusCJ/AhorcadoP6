@@ -20,6 +20,12 @@ CREATE TABLE PREGUNTA
 	PREGUNTA_ASIG char(4),
 	PRIMARY KEY (PREGUNTA_NUM)
 );
+CREATE TABLE MATERIA
+(
+	MATERIA_CLAVE char(4),
+	MATERIA_NOMBRE varchar(15),
+	PRIMARY KEY (MATERIA_CLAVE)
+);
 
 INSERT INTO USUARIO VALUES('ETHAN','317542689','tripleH12','J');
 INSERT INTO USUARIO VALUES('KEVIN','315294378','mamemimomu','J');
@@ -35,3 +41,5 @@ INSERT INTO PREGUNTA VALUES(7,'Actividad en la que se le dan instrucciones a una
 INSERT INTO PREGUNTA VALUES(8,'Parte lógica de las computadoras','software','1412');
 INSERT INTO PREGUNTA VALUES(9,'Actividad en que se traduce un programa a lenguaje máquina de una sola vez','compilar','1412');
 INSERT INTO PREGUNTA VALUES(10,'Persona que usa sus habilidades de programación para fines delictivos','cracker','1412'); 
+INSERT INTO MATERIA VALUES('1412','Informática');
+INSERT INTO MATERIA VALUES('1502','Biología IV');
