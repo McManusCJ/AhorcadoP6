@@ -1,3 +1,11 @@
+function perdiste()
+{
+	var perdedor = '<h3>¡Has perdido!</h3><div class="col-md-2">La respuesta es '+getCookie("palabra")+'</div>';
+	perdedor = perdedor+'<a href="../programs/Inicio.php" class="btn btn-warning btn-lg">¿Quieres jugar de nuevo?</a>';
+	$("#tablero").html(perdedor);
+	$("#ahorcado").attr("src","../resources/murio.png");
+	return;
+}
 function getCookie(cname) {
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -19,11 +27,18 @@ function hacerTabla(cadArr)
 	var tabla = "<table><tr>";
 	
 	var arr = cadArr.split(".");
-	for(var i=0; i<arr.length(); i++)
+	for(var i=0; i<arr.length; i++)
 		tabla = tabla+"<td>"+arr[i]+"</td>";
 	tabla = tabla+"</tr></table>";
 	
 	return tabla;
+}
+function inicializarArr(lon)
+{
+	var cadArr = " ";
+	for(var i=1; i<lon; i++)	//inicializa el arreglo-cadena llenandolo de espacios
+		cadArr = cadArr+". ";
+	return cadArr;
 }
 $("#empezar").click(function(event){		//click en el boton de juego nuevo
 	$.ajax({
@@ -33,28 +48,29 @@ $("#empezar").click(function(event){		//click en el boton de juego nuevo
 		dataType:"text",
 		success:function(data){
 			var datos = data.split(",");		//data tiene concatenados la pregunta y la respuesta separadas por una coma
-			//document.cookie = "pregunta="+datos[0]+";";
-			document.cookie = "palabra="+datos[1]+";";
-			//var cadArr = datos[1].split("").join(".");	Esto servira en algun punto
-			var cadArr = "";
-			for(var x=0;x<datos[1].length();x++)	//inicializa el arreglo-cadena llenandolo de espacios
-				cadArr = cadArr+" .";
-			document.cookie = "arreglo="+cadArr+";";
 			
-			document.cookie = "puntos=0;";
+			document.cookie = "palabra="+datos[1]+";";
+			//console.log(datos[1]);
+			
+			cadArr = inicializarArr(datos[1].length);
+			document.cookie = "arreglo="+cadArr+";";
+			document.cookie = "puntos=1;";
 			
 			var tabla = hacerTabla(cadArr);
 			tabla = '<div class="row" id="tabla-div">'+tabla+'</div>';
 			
-			var inputLetra = '<div class="row"><input type="text" id="letraU" class="form-control" maxlength="1" size="1"/>';
-			inputLetra = inputLetra+'<button type="submit" class="btn btn-default btn-md" id="btn-res">Probar</button></div>';
+			var inputLetra = '<div class="row"><input type="text" id="letraU" class="form-control" maxlength="1" size="1"/></div>';
+			inputLetra = inputLetra+'<div class="row"><button type="button" id="btn-res" class="btn btn-primary btn-md center-block">Probar</button></div>';
 			
-			$("#tablero").html('<div class="row"><h2>'+datos[0]+'</h2></div>'+tabla+inputLetra);
+			$("#ahorcado").attr("src","../resources/punt1.png");
+			$("#tablero").html('<div class="row"><h3>'+datos[0]+'</h3></div>'+tabla+inputLetra);
+			//$("#btn-res").click(respuesta());
 		}
 	});
 });
 
-$("#btn-res").click(function(){		//evento cada que meta una letra
+$("#tablero").on("click","#btn-res",function()		//evento cada que meta una letra
+{		
 	var puntos = parseInt(getCookie("puntos"));
 	
 	if(puntos<=6)
@@ -62,29 +78,32 @@ $("#btn-res").click(function(){		//evento cada que meta una letra
 		var letra = $("#letraU").val();		//falta validar con regex
 		var palabraArr = getCookie("palabra").split("");
 		var arregloArr = getCookie("arreglo").split(".");
+		var resultado = false;
 		
-		if(arregloArr.length()==palabraArr.length())	//esto es solo para ver si funciona
-			console.log("Miden lo mismo");
-		
-		var resultado = FALSE;
-		for(var i=0; i<palabraArr.length(); i++)
+		for(var i=0; i<palabraArr.length; i++)
 			if(palabraArr[i] == letra)
 			{
 				arregloArr[i] = letra;
-				resultado = TRUE;
+				resultado = true;
 			}
+		
 		if(!resultado)
 		{
 			puntos++;
-			$("#ahorcado").attr("src","../resources/punt"+puntos.toString()+".png");
+			if(puntos <= 6)
+				$("#ahorcado").attr("src","../resources/punt"+puntos.toString()+".png");
+			else
+				perdiste();
 		}
-		else if(puntos == 6)
+		else if(getCookie("palabra") == arregloArr.join(""))
 		{
-			var ganador = '<h2>Has ganado</h2><div class="col-md-2">La respuesta es '+getCookie("palabra")+'</div>';
-			ganador = ganador+'<a href="../programs/Inicio.php" class="btn btn-default btn-lg">¿Quieres jugar de nuevo?</a>';
+			var ganador = '<div class="row"><h3>¡Has ganado!</h3></div><div class="col-md-2">La respuesta es '+getCookie("palabra")+'</div>';
+			ganador = ganador+'<div class="row"><a href="../programs/Inicio.php" class="btn btn-warning btn-lg" role="button">¿Quieres jugar de nuevo?</a></div>';
 			$("#tablero").html(ganador);
 			$("#ahorcado").attr("src","../resources/vivio.png");
 		}
+		else
+			console.log(getCookie("palabra")+"$"+getCookie("arreglo").split(".").join(""));
 				
 		arregloCad = arregloArr.join(".");
 		
@@ -92,10 +111,7 @@ $("#btn-res").click(function(){		//evento cada que meta una letra
 		$("#tabla-div").html(hacerTabla(arregloCad));
 	}
 	else{
-		$("#ahorcado").attr("src","../resources/murio.png");
-		var perdedor = '<h2>Has perdido</h2><div class="col-md-2">La respuesta era '+getCookie("palabra")+'</div>';
-		perdedor = perdedor+'<a href="../programs/Inicio.php" class="btn btn-default btn-lg">¿Quieres jugar de nuevo?</a>';
-		$("#tablero").html(perdedor);
+		perdiste();
 	}
 	document.cookie = "puntos="+puntos.toString()+";";
 });
